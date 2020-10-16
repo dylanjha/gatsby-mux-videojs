@@ -1,3 +1,27 @@
+## Attempting to replicate a bug with gatsby + video.js + mux data
+
+1. clone
+1. run `yarn install`
+1. run `yarn build` (build production version)
+1. run `yarn serve` (serve static production version)
+1. Open up http://localhost:9000/. The player works and events get logged
+
+Everything seems to be working. I'm trying to replicate a bug that happens with
+an error along the lines of this:
+
+```
+videojs-mux.js:formatted:1 VIDEOJS: ERROR: TypeError: Cannot read property 'warn' of undefined
+    at TextTrack.<anonymous> (videojs-mux.js:formatted:1)
+    at TextTrack.data.dispatcher (videojs-mux.js:formatted:1)
+    at trigger (videojs-mux.js:formatted:1)
+    at TextTrack../node_modules/video.js/dist/video.es.js.EventTarget.trigger (videojs-mux.js:formatted:1)
+```
+
+This error trace points to an error inside the mux SDK where we call `this.mux.log.warn()`. It seems
+to be that `this.mux.log` is undefined somehow. My best guess is that something in the build process is munging up
+the imports inside the mux SDK.
+
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
