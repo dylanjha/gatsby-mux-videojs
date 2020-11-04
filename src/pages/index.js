@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { navigate } from 'gatsby';
 import Player from '../components/player';
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <div style={{marginTop: '40px'}}>
         <button onClick={() => setIsMounted(true)}>Mount</button>
         <button onClick={() => setIsMounted(false)}>Dispose</button>
+        <button onClick={() => navigate('/two')}>Navigate to Page Two</button>
       </div>
     </div>
   )
