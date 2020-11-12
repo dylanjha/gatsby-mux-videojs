@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from "react"
-import videojs from "video.js";
-import "videojs-mux";
-import "video.js/dist/video-js.css";
+/* globals videojs */
+
+import React, { useEffect, useRef } from "react"
 
 export default function Home() {
   const videoRef = useRef(null);
